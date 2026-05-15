@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FINDRA — Discussion</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:#05010b;
+color:white;
+padding:20px;
+background:
+radial-gradient(circle at top left, rgba(217,70,239,.15), transparent 30%),
+#05010b;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:24px;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:14px;
+cursor:pointer;
+}
+
+.logo-circle{
+width:56px;
+height:56px;
+border-radius:50%;
+background:linear-gradient(135deg,#ff7de7,#9333ea);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:34px;
+font-weight:800;
+box-shadow:0 0 25px #d946ef;
+}
+
+.logo-title{
+font-size:34px;
+font-weight:900;
+}
+
+.find{
+color:white;
+text-shadow:0 0 18px rgba(217,70,239,.7);
+}
+
+.ra{
+color:#c084fc;
+opacity:.75;
+}
+
+.back-btn{
+width:48px;
+height:48px;
+border-radius:14px;
+background:#12071c;
+border:1px solid #4b136d;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
+color:#f0abfc;
+cursor:pointer;
+}
+
+.discussion-header{
+background:#0a0412;
+border:1px solid #311046;
+border-radius:26px;
+padding:26px;
+margin-bottom:24px;
+}
+
+.discussion-category{
+display:inline-block;
+padding:7px 14px;
+border-radius:999px;
+background:rgba(217,70,239,.14);
+border:1px solid rgba(217,70,239,.3);
+color:#f0abfc;
+font-size:12px;
+font-weight:700;
+margin-bottom:16px;
+}
+
+.discussion-title{
+font-size:42px;
+font-weight:900;
+line-height:1.2;
+margin-bottom:18px;
+}
+
+.discussion-description{
+font-size:16px;
+line-height:1.8;
+color:#d4d4d8;
+}
+
+.comments-section{
+background:#0a0412;
+border:1px solid #311046;
+border-radius:26px;
+padding:24px;
+}
+
+.comments-title{
+font-size:28px;
+font-weight:800;
+margin-bottom:22px;
+}
+
+.comment{
+display:flex;
+gap:16px;
+padding:18px;
+border-radius:18px;
+background:#12071c;
+border:1px solid #4b136d;
+margin-bottom:18px;
+}
+
+.avatar{
+width:60px;
+height:60px;
+border-radius:50%;
+background-size:cover;
+background-position:center;
+flex-shrink:0;
+}
+
+.comment-content{
+width:100%;
+}
+
+.comment-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:10px;
+}
+
+.comment-name{
+font-size:16px;
+font-weight:700;
+}
+
+.comment-date{
+font-size:12px;
+color:#c4b5fd;
+}
+
+.comment-text{
+font-size:15px;
+line-height:1.7;
+color:#e4e4e7;
+margin-bottom:12px;
+}
+
+.comment-actions{
+display:flex;
+gap:16px;
+font-size:13px;
+color:#d8b4fe;
+}
+
+.write-comment{
+margin-top:30px;
+padding-top:24px;
+border-top:1px solid rgba(255,255,255,.05);
+}
+
+.write-comment h3{
+font-size:24px;
+margin-bottom:18px;
+}
+
+textarea{
+width:100%;
+height:140px;
+resize:none;
+padding:18px;
+border-radius:18px;
+background:#12071c;
+border:1px solid #4b136d;
+outline:none;
+color:white;
+font-size:15px;
+font-family:'Inter',sans-serif;
+margin-bottom:16px;
+}
+
+textarea:focus{
+border-color:#d946ef;
+box-shadow:0 0 18px rgba(217,70,239,.2);
+}
+
+.submit-btn{
+height:50px;
+padding:0 24px;
+border:none;
+border-radius:14px;
+background:linear-gradient(135deg,#d946ef,#9333ea);
+color:white;
+font-weight:700;
+font-size:15px;
+cursor:pointer;
+box-shadow:0 0 20px rgba(217,70,239,.35);
+}
+
+.submit-btn:hover{
+transform:translateY(-2px);
+}
+
+@media(max-width:800px){
+.discussion-title{
+font-size:30px;
+}
+
+.comment{
+flex-direction:column;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+<div class="logo" onclick="goHome()">
+<div class="logo-circle">F</div>
+<div class="logo-title">
+<span class="find">FIND</span><span class="ra">RA</span>
+</div>
+</div>
+
+<div class="back-btn" onclick="goBack()">
+<i class="fa-solid fa-arrow-left"></i>
+</div>
+</header>
+
+<section class="discussion-header">
+<div class="discussion-category" id="discussionCategory">Anime</div>
+
+<h1 class="discussion-title" id="discussionTitle">
+What anime blew your mind this season?
+</h1>
+
+<p class="discussion-description" id="discussionDescription">
+Share your favorite anime of the season and explain what made it special for you. Animation, story, soundtrack or characters — everything matters.
+</p>
+</section>
+
+<section class="comments-section">
+<h2 class="comments-title">Community Discussion</h2>
+
+<div id="commentsContainer">
+
+<div class="comment">
+<div class="avatar" style="background-image:url('https://i.pravatar.cc/100?img=12')"></div>
+
+<div class="comment-content">
+<div class="comment-top">
+<div class="comment-name">Akira</div>
+<div class="comment-date">2 hours ago</div>
+</div>
+
+<p class="comment-text">
+Solo Leveling completely surprised me this season. The animation quality and hype moments were incredible.
+</p>
+
+<div class="comment-actions">
+<span>♡ 128</span>
+<span>💬 Reply</span>
+</div>
+</div>
+</div>
+
+<div class="comment">
+<div class="avatar" style="background-image:url('https://i.pravatar.cc/100?img=25')"></div>
+
+<div class="comment-content">
+<div class="comment-top">
+<div class="comment-name">Luna</div>
+<div class="comment-date">5 hours ago</div>
+</div>
+
+<p class="comment-text">
+Frieren was the anime that emotionally impacted me the most. It felt calm, beautiful and meaningful.
+</p>
+
+<div class="comment-actions">
+<span>♡ 94</span>
+<span>💬 Reply</span>
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="write-comment">
+<h3>Write a Comment</h3>
+
+<textarea id="commentInput" placeholder="Share your opinion with the community..."></textarea>
+
+<button class="submit-btn" onclick="addComment()">
+Post Comment
+</button>
+</div>
+</section>
+
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const discussion = params.get('discussion');
+
+const discussionData = {
+
+'anime-discussion':{
+title:'What anime blew your mind this season?',
+category:'Anime',
+description:'Share your favorite anime of the season and explain what made it special for you. Animation, story, soundtrack or characters — everything matters.'
+},
+
+'movies-discussion':{
+title:'Best movies of 2024 so far?',
+category:'Movies',
+description:'Discuss the best movies released this year and share your top picks with the FINDRA community.'
+},
+
+'series-discussion':{
+title:'What are your theories for TLOU S2?',
+category:'Series',
+description:'Share your predictions and theories for the next season of The Last of Us.'
+},
+
+'cartoon-discussion':{
+title:'Which cartoon had the best comeback?',
+category:'Cartoon',
+description:'Talk about the best cartoon revivals and which comeback impressed you the most.'
+}
+
+};
+
+const currentDiscussion = discussionData[discussion];
+
+if(currentDiscussion){
+
+document.getElementById('discussionTitle').textContent = currentDiscussion.title;
+
+document.getElementById('discussionCategory').textContent = currentDiscussion.category;
+
+document.getElementById('discussionDescription').textContent = currentDiscussion.description;
+
+document.title = 'FINDRA — ' + currentDiscussion.title;
+
+}
+
+function addComment(){
+
+const input = document.getElementById('commentInput');
+const text = input.value.trim();
+
+if(text === '') return;
+
+const container = document.getElementById('commentsContainer');
+
+const comment = document.createElement('div');
+comment.className = 'comment';
+
+comment.innerHTML = `
+<div class="avatar" style="background-image:url('https://i.pravatar.cc/100?img=40')"></div>
+
+<div class="comment-content">
+<div class="comment-top">
+<div class="comment-name">You</div>
+<div class="comment-date">Just now</div>
+</div>
+
+<p class="comment-text">${text}</p>
+
+<div class="comment-actions">
+<span class="like-btn" onclick="toggleLike(this)">♡ 0</span>
+<span>💬 Reply</span>
+</div>
+</div>
+`;
+
+container.appendChild(comment);
+
+input.value = '';
+
+}
+
+function toggleLike(element){
+
+let text = element.textContent.replace('♡ ','');
+let likes = parseInt(text);
+
+if(element.classList.contains('liked')){
+likes--;
+element.classList.remove('liked');
+element.innerHTML = '♡ ' + likes;
+}
+else{
+likes++;
+element.classList.add('liked');
+element.innerHTML = '♥ ' + likes;
+}
+
+}
+
+function goHome(){
+window.location.href='index.html';
+}
+
+function goBack(){
+window.history.back();
+}
+</script>
+
+</body>
+</html>

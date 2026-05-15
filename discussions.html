@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FINDRA — Discussions</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:#05010b;
+color:white;
+padding:18px;
+background-image:
+radial-gradient(circle at top left,#2c0246 0%,#05010b 45%),
+linear-gradient(to bottom,#090012,#05010b);
+}
+
+.container{
+max-width:1280px;
+margin:auto;
+}
+
+header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:18px;
+margin-bottom:24px;
+}
+
+.left-header{
+display:flex;
+align-items:center;
+gap:14px;
+cursor:pointer;
+}
+
+.logo-circle{
+width:54px;
+height:54px;
+border-radius:50%;
+background:linear-gradient(135deg,#ff7de7,#a855f7);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:34px;
+font-weight:800;
+box-shadow:0 0 20px #d946ef;
+}
+
+.logo-title{
+font-size:28px;
+font-weight:800;
+letter-spacing:-1px;
+}
+
+.find{
+color:#ffffff;
+text-shadow:0 0 8px #fff,0 0 20px #d946ef,0 0 40px #d946ef;
+}
+
+.ra{
+color:#b68ac8;
+opacity:0.75;
+}
+
+.search-bar{
+flex:1;
+max-width:720px;
+position:relative;
+}
+
+.search-bar input{
+width:100%;
+height:44px;
+padding:0 50px 0 18px;
+background:#0b0612;
+border:1px solid #3f145e;
+border-radius:14px;
+outline:none;
+color:white;
+font-size:14px;
+}
+
+.search-bar i{
+position:absolute;
+right:18px;
+top:50%;
+transform:translateY(-50%);
+color:#d8b4fe;
+}
+
+.back-btn{
+width:42px;
+height:42px;
+border-radius:12px;
+background:#12071c;
+border:1px solid #4b136d;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+font-size:16px;
+color:#f0abfc;
+}
+
+.page-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:24px;
+}
+
+.page-title{
+font-size:30px;
+font-weight:800;
+}
+
+.start-btn{
+padding:12px 18px;
+background:#a21caf;
+border:none;
+border-radius:14px;
+color:white;
+font-weight:600;
+cursor:pointer;
+box-shadow:0 0 20px rgba(217,70,239,0.35);
+transition:0.3s;
+}
+
+.start-btn:hover{
+transform:translateY(-2px);
+}
+
+.filter-row{
+display:flex;
+gap:12px;
+margin-bottom:24px;
+flex-wrap:wrap;
+}
+
+.filter-btn{
+padding:10px 16px;
+background:#12071c;
+border:1px solid #4b136d;
+border-radius:12px;
+color:#e9d5ff;
+font-size:13px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.filter-btn.active,
+.filter-btn:hover{
+background:#a21caf;
+}
+
+.discussions-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+}
+
+.discussion-card{
+background:#12071c;
+border:1px solid #4b136d;
+border-radius:20px;
+padding:18px;
+transition:0.3s;
+cursor:pointer;
+}
+
+.discussion-card:hover{
+transform:translateY(-4px);
+box-shadow:0 0 24px rgba(217,70,239,0.25);
+}
+
+.discussion-top{
+display:flex;
+gap:14px;
+margin-bottom:18px;
+}
+
+.avatar{
+width:58px;
+height:58px;
+border-radius:50%;
+background:linear-gradient(135deg,#9333ea,#ec4899);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+font-weight:700;
+flex-shrink:0;
+}
+
+.user-info h4{
+font-size:15px;
+margin-bottom:4px;
+}
+
+.user-info span{
+font-size:12px;
+color:#c4b5fd;
+}
+
+.discussion-title{
+font-size:18px;
+line-height:1.4;
+margin-bottom:14px;
+}
+
+.discussion-text{
+font-size:13px;
+line-height:1.6;
+color:#d4d4d8;
+margin-bottom:18px;
+}
+
+.discussion-stats{
+display:flex;
+gap:18px;
+font-size:13px;
+color:#f0abfc;
+}
+
+.start-discussion{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+min-height:320px;
+}
+
+.start-discussion i{
+font-size:58px;
+margin-bottom:18px;
+color:#f0abfc;
+}
+
+.start-discussion h3{
+font-size:22px;
+margin-bottom:10px;
+}
+
+.start-discussion p{
+font-size:14px;
+color:#c4b5fd;
+margin-bottom:18px;
+}
+
+.start-discussion button{
+padding:12px 20px;
+background:#a21caf;
+border:none;
+border-radius:14px;
+color:white;
+font-weight:600;
+cursor:pointer;
+}
+
+@media(max-width:1100px){
+.discussions-grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+@media(max-width:700px){
+header{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.search-bar{
+max-width:100%;
+width:100%;
+}
+
+.page-header{
+flex-direction:column;
+align-items:flex-start;
+gap:14px;
+}
+
+.discussions-grid{
+grid-template-columns:1fr;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+<div class="left-header" onclick="goHome()">
+<div class="logo-circle">F</div>
+<div class="logo-title">
+<span class="find">FIND</span><span class="ra">RA</span>
+</div>
+</div>
+
+<div class="search-bar">
+<input type="text" id="searchInput" placeholder="Search discussions...">
+<i class="fa-solid fa-magnifying-glass"></i> 
+</div>
+
+<div class="back-btn" onclick="goHome()">
+<i class="fa-solid fa-arrow-left"></i>
+</div>
+</header>
+
+<div class="page-header">
+<h1 class="page-title">Community Discussions</h1>
+<button class="start-btn" onclick="startDiscussion()">Creat Discussion</button>
+</div>
+
+<div class="filter-row">
+<div class="filter-btn active" onclick="filterDiscussions('all',event)">All</div>
+<div class="filter-btn" onclick="filterDiscussions('anime',event)">Anime</div>
+<div class="filter-btn" onclick="filterDiscussions('movie',event)">Movies</div>
+<div class="filter-btn" onclick="filterDiscussions('series',event)">Series</div>
+<div class="filter-btn" onclick="filterDiscussions('cartoons',event)">Cartoons</div>
+</div>
+
+
+<div class="discussions-grid">
+
+<div class="discussion-card anime" onclick="openDiscussion('anime-discussion')">
+<div class="discussion-top">
+<div class="avatar">A</div>
+<div class="user-info">
+<h4>Alex Mercer</h4>
+<span>2 hours ago</span>
+</div>
+</div>
+
+<h2 class="discussion-title">What anime completely changed your taste forever?</h2>
+
+<p class="discussion-text">
+Some anime completely redefine what you expect from storytelling and animation. Which one had the biggest impact on you?
+</p>
+
+<div class="discussion-stats">
+
+<span>💬 328</span>
+<span>👁 19K</span>
+</div>
+</div>
+
+<div class="discussion-card movies" onclick="openDiscussion('movies-discussion')">
+<div class="discussion-top">
+<div class="avatar">M</div>
+<div class="user-info">
+<h4>Mia Carter</h4>
+<span>5 hours ago</span>
+</div>
+</div>
+
+<h2 class="discussion-title">Best movie cinematography you've ever seen?</h2>
+
+<p class="discussion-text">
+From Blade Runner to Oppenheimer, some movies are visual masterpieces. Which film impressed you the most visually?
+</p>
+
+<div class="discussion-stats">
+
+<span>💬 214</span>
+<span>👁 12K</span>
+</div>
+</div>
+
+<div class="discussion-card series" onclick="openDiscussion('series-discussion')">
+<div class="discussion-top">
+<div class="avatar">S</div>
+<div class="user-info">
+<h4>Sophia Lee</h4>
+<span>Yesterday</span>
+</div>
+</div>
+
+<h2 class="discussion-title">Which series had the best final season?</h2>
+
+<p class="discussion-text">
+Many shows fail their endings, but some deliver legendary finales. Which series ended perfectly in your opinion?
+</p>
+
+<div class="discussion-stats">
+
+<span>💬 189</span>
+<span>👁 8K</span>
+</div>
+</div>
+
+<div class="discussion-card cartoons" onclick="openDiscussion('cartoon-discussion')">
+<div class="discussion-top">
+<div class="avatar">J</div>
+<div class="user-info">
+<h4>Jason Hill</h4>
+<span>2 days ago</span>
+</div>
+</div>
+
+<h2 class="discussion-title">Cartoons that are secretly made for adults?</h2>
+
+<p class="discussion-text">
+Some cartoons look simple but contain deep stories and mature themes. Which animated show surprised you the most?
+</p>
+
+<div class="discussion-stats">
+
+<span>💬 143</span>
+<span>👁 6K</span>
+</div>
+</div>
+
+<div class="discussion-card anime" onclick="openDiscussion('one-piece-discussion')">
+<div class="discussion-top">
+<div class="avatar">K</div>
+<div class="user-info">
+<h4>Kaito</h4>
+<span>3 days ago</span>
+</div>
+</div>
+
+<h2 class="discussion-title">Will One Piece actually end in the next few years?</h2>
+
+<p class="discussion-text">
+Oda confirmed the final saga, but fans still debate how long the journey will continue.
+</p>
+
+<div class="discussion-stats">
+
+<span>💬 401</span>
+<span>👁 25K</span>
+</div>
+</div>
+</div>
+
+</div>
+
+<script>
+function goHome(){
+window.location.href='index.html';
+}
+
+function startDiscussion(){
+window.location.href='create-discussion.html';
+}
+
+function openDiscussion(page){
+  window.location.href = 'open-discussion.html?name=' + page;
+}
+
+function filterDiscussions(category, event){
+  const cards = document.querySelectorAll('.discussion-card');
+  const buttons = document.querySelectorAll('.filter-btn');
+
+  buttons.forEach(btn => btn.classList.remove('active'));
+
+  if(event){
+    event.target.classList.add('active');
+  }
+
+  cards.forEach(card => {
+    if(category === 'all'){
+      card.style.display = 'block';
+    } else if(card.classList.contains(category)){
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+const searchInput = document.getElementById('searchInput');
+
+searchInput.addEventListener('input', function(){
+  const value = this.value.toLowerCase();
+  const cards = document.querySelectorAll('.discussion-card');
+
+  cards.forEach(card => {
+    const text = card.innerText.toLowerCase();
+
+    if(text.includes(value)){
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+});
+</script>
+
+
+
+</body>
+</html>

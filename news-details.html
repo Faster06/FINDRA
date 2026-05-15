@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FINDRA — News</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:#05010b;
+color:white;
+padding:20px;
+background:
+radial-gradient(circle at top left, rgba(217,70,239,.15), transparent 30%),
+#05010b;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:28px;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:14px;
+cursor:pointer;
+}
+
+.logo-circle{
+width:56px;
+height:56px;
+border-radius:50%;
+background:linear-gradient(135deg,#ff7de7,#9333ea);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:34px;
+font-weight:800;
+box-shadow:0 0 25px #d946ef;
+}
+
+.logo-title{
+font-size:34px;
+font-weight:900;
+}
+
+.find{
+color:white;
+text-shadow:0 0 18px rgba(217,70,239,.7);
+}
+
+.ra{
+color:#c084fc;
+opacity:.75;
+}
+
+.back-btn{
+width:48px;
+height:48px;
+border-radius:14px;
+background:#12071c;
+border:1px solid #4b136d;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
+color:#f0abfc;
+cursor:pointer;
+}
+
+.article{
+background:#0a0412;
+border:1px solid #311046;
+border-radius:28px;
+padding:24px;
+}
+
+.news-image{
+width:100%;
+height:480px;
+object-fit:cover;
+border-radius:22px;
+border:1px solid #4b136d;
+margin-bottom:24px;
+}
+
+.news-meta{
+display:flex;
+align-items:center;
+gap:14px;
+margin-bottom:18px;
+flex-wrap:wrap;
+}
+
+.news-category{
+padding:7px 14px;
+border-radius:999px;
+background:rgba(217,70,239,.15);
+border:1px solid rgba(217,70,239,.35);
+color:#f0abfc;
+font-size:12px;
+font-weight:700;
+}
+
+.news-date{
+color:#c4b5fd;
+font-size:13px;
+}
+
+.news-title{
+font-size:42px;
+font-weight:900;
+line-height:1.2;
+margin-bottom:22px;
+}
+
+.news-text{
+font-size:16px;
+line-height:1.9;
+color:#d4d4d8;
+}
+
+.related-section{
+margin-top:30px;
+}
+
+.related-title{
+font-size:24px;
+font-weight:800;
+margin-bottom:18px;
+}
+
+.related-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px;
+}
+
+.related-card{
+background:#12071c;
+border:1px solid #4b136d;
+border-radius:18px;
+overflow:hidden;
+cursor:pointer;
+transition:.2s;
+}
+
+.related-card:hover{
+transform:translateY(-3px);
+box-shadow:0 0 20px rgba(217,70,239,.2);
+}
+
+.related-card img{
+width:100%;
+height:180px;
+object-fit:cover;
+}
+
+.related-content{
+padding:14px;
+}
+
+.related-content h4{
+font-size:14px;
+line-height:1.5;
+}
+
+@media(max-width:800px){
+.news-title{
+font-size:30px;
+}
+
+.news-image{
+height:280px;
+}
+
+.related-grid{
+grid-template-columns:1fr;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+<div class="logo" onclick="goHome()">
+<div class="logo-circle">F</div>
+<div class="logo-title">
+<span class="find">FIND</span><span class="ra">RA</span>
+</div>
+</div>
+
+<div class="back-btn" onclick="goBack()">
+<i class="fa-solid fa-arrow-left"></i>
+</div>
+</header>
+
+<section class="article">
+<img id="newsImage" class="news-image" src="https://picsum.photos/1200/700?1">
+
+<div class="news-meta">
+<div class="news-category" id="newsCategory">ANIME</div>
+<div class="news-date" id="newsDate">May 20, 2024</div>
+</div>
+
+<h1 class="news-title" id="newsTitle">
+Solo Leveling Season 2 Officially Announced
+</h1>
+
+<p class="news-text" id="newsText">
+The second season of Solo Leveling has officially been announced after the incredible success of the first season. Fans around the world are excited to see Sung Jin-Woo continue his journey and face even stronger enemies.
+</p>
+
+<div class="related-section">
+<h2 class="related-title">Related News</h2>
+
+<div class="related-grid">
+
+<div class="related-card" onclick="openNews('oppenheimer-oscars')">
+<img src="https://picsum.photos/700/400?2">
+<div class="related-content">
+<h4>Oppenheimer Wins Big at the Oscars</h4>
+</div>
+</div>
+
+<div class="related-card" onclick="openNews('last-of-us-season2')">
+<img src="https://picsum.photos/700/400?3">
+<div class="related-content">
+<h4>The Last of Us Season 2 Begins Production</h4>
+</div>
+</div>
+
+<div class="related-card" onclick="openNews('spiderverse-release')">
+<img src="https://picsum.photos/700/400?4">
+<div class="related-content">
+<h4>Spider-Verse 3 Gets Official Release Window</h4>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const news = params.get('news');
+
+const newsData = {
+
+'solo-leveling-season2':{
+title:'Solo Leveling Season 2 Officially Announced',
+image:'https://picsum.photos/1200/700?11',
+date:'May 20, 2024',
+category:'ANIME',
+text:'The second season of Solo Leveling has officially been announced after the incredible success of the first season. Fans around the world are excited to see Sung Jin-Woo continue his journey and face even stronger enemies. The new season promises improved animation, larger battles and deeper character development.'
+},
+
+'oppenheimer-oscars':{
+title:'Oppenheimer Wins Big at the Oscars',
+image:'https://picsum.photos/1200/700?12',
+date:'May 18, 2024',
+category:'MOVIE',
+text:'Christopher Nolan’s Oppenheimer dominated the Academy Awards this year, winning multiple major categories including Best Picture and Best Director. Critics praised the film for its storytelling, cinematography and performances.'
+},
+
+'last-of-us-season2':{
+title:'The Last of Us Season 2 Begins Production',
+image:'https://picsum.photos/1200/700?13',
+date:'May 10, 2024',
+category:'SERIES',
+text:'HBO officially confirmed that production for The Last of Us Season 2 has started. Fans are expecting a darker and more emotional continuation based on the events of the second game.'
+},
+
+'spiderverse-release':{
+title:'Spider-Verse 3 Gets Official Release Window',
+image:'https://picsum.photos/1200/700?14',
+date:'May 4, 2024',
+category:'CARTOON',
+text:'Sony Pictures revealed the release window for Spider-Verse 3. The animated franchise remains one of the most visually impressive superhero projects ever created.'
+}
+
+};
+
+const currentNews = newsData[news];
+
+if(currentNews){
+
+document.getElementById('newsTitle').textContent = currentNews.title;
+
+document.getElementById('newsImage').src = currentNews.image;
+
+document.getElementById('newsDate').textContent = currentNews.date;
+
+document.getElementById('newsCategory').textContent = currentNews.category;
+
+document.getElementById('newsText').textContent = currentNews.text;
+
+document.title = 'FINDRA — ' + currentNews.title;
+
+}
+
+function goHome(){
+window.location.href='index.html';
+}
+
+function goBack(){
+window.history.back();
+}
+
+function openNews(news){
+window.location.href='news-details.html?news='+news;
+}
+</script>
+
+</body>
+</html>

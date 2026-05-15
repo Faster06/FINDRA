@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FINDRA — Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:#05010b;
+color:white;
+padding:18px;
+background-image:
+radial-gradient(circle at top left,#2c0246 0%,#05010b 45%),
+linear-gradient(to bottom,#090012,#05010b);
+}
+
+.container{
+max-width:1280px;
+margin:auto;
+}
+
+header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:18px;
+}
+
+.left-header{
+display:flex;
+align-items:center;
+gap:14px;
+cursor:pointer;
+}
+
+.logo-circle{
+width:54px;
+height:54px;
+border-radius:50%;
+background:linear-gradient(135deg,#ff7de7,#a855f7);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:34px;
+font-weight:800;
+box-shadow:0 0 20px #d946ef;
+}
+
+.logo-title{
+font-size:28px;
+font-weight:800;
+letter-spacing:-1px;
+}
+
+.find{
+color:#ffffff;
+text-shadow:0 0 8px #fff,0 0 20px #d946ef,0 0 40px #d946ef;
+}
+
+.ra{
+color:#b68ac8;
+opacity:0.75;
+}
+
+.back-btn{
+width:42px;
+height:42px;
+border-radius:12px;
+background:#12071c;
+border:1px solid #4b136d;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+font-size:16px;
+color:#f0abfc;
+}
+
+.profile-card{
+background:#0a0412;
+border:1px solid #311046;
+border-radius:22px;
+padding:26px;
+box-shadow:0 0 30px rgba(217,70,239,0.08);
+margin-bottom:18px;
+}
+
+.profile-top{
+display:flex;
+align-items:center;
+gap:24px;
+margin-bottom:24px;
+}
+
+.avatar{
+width:120px;
+height:120px;
+border-radius:50%;
+background:linear-gradient(135deg,#9333ea,#ec4899);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:52px;
+font-weight:800;
+box-shadow:0 0 30px rgba(217,70,239,0.4);
+}
+
+.profile-info h1{
+font-size:34px;
+margin-bottom:10px;
+}
+
+.profile-info p{
+color:#c4b5fd;
+font-size:15px;
+margin-bottom:8px;
+}
+
+.profile-stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:16px;
+margin-top:10px;
+}
+
+.stat-box{
+background:#12071c;
+border:1px solid #4b136d;
+border-radius:18px;
+padding:18px;
+text-align:center;
+}
+
+.stat-box h2{
+font-size:26px;
+color:#f0abfc;
+margin-bottom:6px;
+}
+
+.stat-box span{
+font-size:13px;
+color:#c4b5fd;
+}
+
+.section{
+background:#0a0412;
+border:1px solid #311046;
+border-radius:20px;
+padding:20px;
+margin-bottom:18px;
+}
+
+.section-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:18px;
+}
+
+.section-title{
+font-size:18px;
+font-weight:700;
+}
+
+.more{
+font-size:13px;
+color:#f0abfc;
+cursor:pointer;
+}
+
+.favorite-grid{
+display:grid;
+grid-template-columns:repeat(6,1fr);
+gap:14px;
+}
+
+.favorite-card{
+background:#12071c;
+border:1px solid #4b136d;
+border-radius:16px;
+overflow:hidden;
+cursor:pointer;
+transition:0.3s;
+}
+
+.favorite-card:hover{
+transform:translateY(-4px);
+box-shadow:0 0 20px rgba(217,70,239,0.35);
+}
+
+.favorite-card img{
+width:100%;
+height:180px;
+object-fit:cover;
+}
+
+.favorite-content{
+padding:10px;
+}
+
+.favorite-content h3{
+font-size:12px;
+margin-bottom:6px;
+}
+
+.favorite-content span{
+font-size:10px;
+color:#c4b5fd;
+}
+
+.activity-box{
+background:#12071c;
+border:1px solid #4b136d;
+border-radius:16px;
+padding:16px;
+margin-bottom:12px;
+}
+
+.activity-box p{
+font-size:14px;
+color:#e9d5ff;
+}
+
+.activity-box span{
+font-size:12px;
+color:#c4b5fd;
+}
+
+@media(max-width:1000px){
+.favorite-grid{
+grid-template-columns:repeat(3,1fr);
+}
+
+.profile-stats{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+@media(max-width:700px){
+.profile-top{
+flex-direction:column;
+text-align:center;
+}
+
+.favorite-grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+<div class="left-header" onclick="goHome()">
+<div class="logo-circle">F</div>
+<div class="logo-title">
+<span class="find">FIND</span><span class="ra">RA</span>
+</div>
+</div>
+
+<div class="back-btn" onclick="goHome()">
+<i class="fa-solid fa-arrow-left"></i>
+</div>
+</header>
+
+<div class="profile-card">
+<div class="profile-top">
+<div class="avatar">D</div>
+
+<div class="profile-info">
+<h1>Danny Wetonber</h1>
+<p>@findra_user</p>
+<p>Joined FINDRA in 2026</p>
+</div>
+</div>
+
+<div class="profile-stats">
+<div class="stat-box">
+<h2>248</h2>
+<span>Favorites</span>
+</div>
+
+<div class="stat-box">
+<h2>39</h2>
+<span>Discussions</span>
+</div>
+
+<div class="stat-box">
+<h2>1.8K</h2>
+<span>Likes</span>
+</div>
+
+<div class="stat-box">
+<h2>92</h2>
+<span>Reviews</span>
+</div>
+</div>
+</div>
+
+<section class="section">
+<div class="section-header">
+<div class="section-title">Favorites</div>
+<div class="more">View All →</div>
+</div>
+
+<div class="favorite-grid">
+<div class="favorite-card" onclick="openPage('solo-leveling')">
+<img src="https://picsum.photos/400/600?1">
+<div class="favorite-content">
+<h3>Solo Leveling</h3>
+<span>Anime</span>
+</div>
+</div>
+
+<div class="favorite-card" onclick="openPage('oppenheimer')">
+<img src="https://picsum.photos/400/600?2">
+<div class="favorite-content">
+<h3>Oppenheimer</h3>
+<span>Movie</span>
+</div>
+</div>
+
+<div class="favorite-card">
+<img src="https://picsum.photos/400/600?3">
+<div class="favorite-content">
+<h3>The Last of Us</h3>
+<span>Series</span>
+</div>
+</div>
+
+<div class="favorite-card">
+<img src="https://picsum.photos/400/600?4">
+<div class="favorite-content">
+<h3>Spider-Verse</h3>
+<span>Cartoon</span>
+</div>
+</div>
+
+<div class="favorite-card">
+<img src="https://picsum.photos/400/600?5">
+<div class="favorite-content">
+<h3>Demon Slayer</h3>
+<span>Anime</span>
+</div>
+</div>
+
+<div class="favorite-card">
+<img src="https://picsum.photos/400/600?6">
+<div class="favorite-content">
+<h3>Breaking Bad</h3>
+<span>Series</span>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="section-header">
+<div class="section-title">Recent Activity</div>
+</div>
+
+<div class="activity-box">
+<p>Added Solo Leveling to favorites</p>
+<span>2 hours ago</span>
+</div>
+
+<div class="activity-box">
+<p>Started a discussion about Oppenheimer</p>
+<span>Yesterday</span>
+</div>
+
+<div class="activity-box">
+<p>Liked 12 comments in Anime Discussions</p>
+<span>3 days ago</span>
+</div>
+</section>
+
+</div>
+
+<script>
+function goHome(){
+window.location.href='index.html';
+}
+
+function openPage(page){
+  window.location.href = 'title.html?name=' + page;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FINDRA</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:
+radial-gradient(circle at top left, rgba(217,70,239,.12), transparent 25%),
+radial-gradient(circle at top right, rgba(168,85,247,.10), transparent 20%),
+#05010b;
+color:white;
+padding:18px;
+}
+
+.container{
+max-width:1380px;
+margin:auto;
+}
+
+/* HEADER */
+
+header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+margin-bottom:18px;
+}
+
+.left-header{
+display:flex;
+align-items:center;
+gap:14px;
+cursor:pointer;
+}
+
+.logo-circle{
+width:54px;
+height:54px;
+border-radius:50%;
+background:linear-gradient(135deg,#ff7de7,#a855f7);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:42px;
+font-weight:800;
+color:white;
+box-shadow:0 0 35px #d946ef;
+border:3px solid white;
+}
+.logo-title{
+font-size:34px;
+font-weight:900;
+letter-spacing:-1px;
+}
+
+.find{
+color:white;
+text-shadow:
+0 0 10px rgba(255,255,255,.4),
+0 0 25px rgba(217,70,239,.5);
+}
+
+.ra{
+color:#c084fc;
+}
+
+/* SEARCH */
+
+.search-bar{
+flex:1;
+position:relative;
+max-width:760px;
+}
+
+.search-bar input{
+width:100%;
+height:48px;
+padding:0 54px 0 18px;
+background:rgba(255,255,255,.03);
+border:1px solid #4b136d;
+border-radius:16px;
+color:white;
+font-size:14px;
+outline:none;
+backdrop-filter:blur(10px);
+transition:.2s;
+}
+
+.search-bar input:focus{
+border-color:#d946ef;
+box-shadow:0 0 18px rgba(217,70,239,.25);
+}
+
+.search-bar i{
+position:absolute;
+right:18px;
+top:50%;
+transform:translateY(-50%);
+font-size:17px;
+color:#e9d5ff;
+}
+
+/* HEADER ICONS */
+
+.header-icons{
+display:flex;
+gap:14px;
+}
+
+.header-icons i{
+width:44px;
+height:44px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:14px;
+background:rgba(255,255,255,.03);
+border:1px solid #311046;
+font-size:18px;
+color:#f0abfc;
+cursor:pointer;
+transition:.2s;
+}
+
+.header-icons i:hover{
+transform:translateY(-2px);
+border-color:#d946ef;
+box-shadow:0 0 18px rgba(217,70,239,.25);
+}
+
+/* CATEGORIES */
+
+.categories{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:10px;
+background:rgba(255,255,255,.02);
+border:1px solid #311046;
+border-radius:18px;
+padding:12px;
+}
+
+.category{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+height:44px;
+font-size:14px;
+cursor:pointer;
+color:#e9d5ff;
+border-radius:12px;
+transition:.22s;
+
+background:transparent;
+border:1px solid transparent;
+}
+
+.category:hover{
+transform:translateY(-2px);
+
+background:
+linear-gradient(
+180deg,
+rgba(217,70,239,.15),
+rgba(147,51,234,.08)
+);
+
+border:1px solid rgba(217,70,239,.28);
+
+box-shadow:
+0 0 16px rgba(217,70,239,.18),
+inset 0 1px 0 rgba(255,255,255,.05);
+}
+.category.active{
+background:
+linear-gradient(
+180deg,
+rgba(217,70,239,.18),
+rgba(147,51,234,.08)
+);
+
+border:1px solid rgba(217,70,239,.32);
+
+box-shadow:
+0 0 18px rgba(217,70,239,.22),
+inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+/* NEWS */
+
+.news-card{
+position:relative;
+height:260px;
+overflow:hidden;
+border-radius:18px;
+border:1px solid #4b136d;
+background:#12071c;
+}
+
+.news-image{
+position:absolute;
+inset:0;
+background-size:cover;
+background-position:center;
+transform:scale(1.05);
+}
+
+.news-overlay{
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+180deg,
+rgba(0,0,0,.1) 0%,
+rgba(0,0,0,.3) 45%,
+rgba(0,0,0,.92) 100%
+);
+}
+
+.news-content{
+position:absolute;
+left:0;
+right:0;
+bottom:0;
+z-index:2;
+padding:16px;
+}
+
+.news-content h3{
+font-size:16px;
+line-height:1.35;
+margin-bottom:8px;
+}
+
+.news-content p{
+font-size:13px;
+color:#d4d4d8;
+line-height:1.45;
+}
+
+/* DISCUSSIONS */
+
+.discussion-top{
+display:flex;
+align-items:flex-start;
+gap:12px;
+}
+
+.discussion-category{
+display:inline-block;
+font-size:11px;
+padding:4px 8px;
+border-radius:999px;
+background:rgba(217,70,239,.18);
+border:1px solid rgba(217,70,239,.3);
+color:#f0abfc;
+margin-bottom:8px;
+}
+
+.discussion-stats{
+margin-top:6px;
+font-size:11px;
+display:flex;
+gap:14px;
+color:#c4b5fd;
+}
+
+/* TRENDING */
+
+.poster{
+position:relative;
+width:68px;
+height:102px;
+border-radius:12px;
+overflow:hidden;
+background-size:cover;
+background-position:center;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.poster span{
+position:absolute;
+top:6px;
+left:6px;
+width:18px;
+height:18px;
+border-radius:6px;
+background:#f0abfc;
+color:#12071c;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:10px;
+font-weight:800;
+}
+
+/* FOOTER */
+
+.footer{
+margin-top:28px;
+padding:18px 10px;
+text-align:center;
+font-size:13px;
+color:#8b789f;
+border-top:1px solid rgba(255,255,255,.05);
+}
+
+/* SECTIONS */
+
+.section{
+background:rgba(255,255,255,.02);
+border:1px solid #311046;
+border-radius:22px;
+padding:16px;
+margin-top:18px;
+backdrop-filter:blur(14px);
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+.section-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:14px;
+padding-bottom:10px;
+border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.section-title{
+font-size:20px;
+font-weight:800;
+position:relative;
+padding-left:14px;
+letter-spacing:.5px;
+}
+
+.section-title::before{
+content:'';
+position:absolute;
+left:0;
+top:1px;
+width:4px;
+height:22px;
+border-radius:20px;
+background:linear-gradient(180deg,#d946ef,#9333ea);
+box-shadow:0 0 12px rgba(217,70,239,.6);
+}
+
+.more{
+font-size:13px;
+color:#f0abfc;
+cursor:pointer;
+}
+
+/* NEWS GRID */
+
+.news-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:14px;
+}
+
+.badge{
+font-size:10px;
+font-weight:700;
+background:rgba(217,70,239,.18);
+border:1px solid rgba(217,70,239,.3);
+padding:5px 10px;
+border-radius:999px;
+display:inline-block;
+margin-bottom:8px;
+color:#f5d0fe;
+}
+
+.news-content span{
+font-size:11px;
+color:#d4d4d8;
+display:block;
+margin-bottom:6px;
+}
+
+/* DISCUSSIONS */
+
+.discussion-row{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:12px;
+}
+
+.discussion-card{
+background:#12071c;
+border-radius:16px;
+border:1px solid #4b136d;
+padding:14px;
+cursor:pointer;
+transition:.2s;
+}
+
+.discussion-card:hover{
+transform:translateY(-3px);
+border-color:#d946ef;
+}
+
+.avatar{
+width:52px;
+height:52px;
+border-radius:50%;
+background:linear-gradient(135deg,#9333ea,#ec4899);
+flex-shrink:0;
+border:2px solid rgba(255,255,255,.08);
+}
+
+.discussion-card h4{
+font-size:13px;
+margin-bottom:8px;
+line-height:1.4;
+}
+
+/* START DISCUSSION */
+
+.start-discussion{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:flex-start;
+background:
+linear-gradient(
+180deg,
+rgba(217,70,239,.12),
+rgba(255,255,255,.02)
+);
+border:1px solid rgba(217,70,239,.3);
+}
+
+.start-discussion h4{
+font-size:16px;
+margin-bottom:8px;
+}
+
+.start-discussion p{
+font-size:12px;
+color:#d4d4d8;
+}
+
+/* TRENDING */
+
+.trending-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+}
+
+.trending-box{
+background:#12071c;
+border-radius:16px;
+border:1px solid #4b136d;
+padding:14px;
+}
+
+.trending-box h3{
+font-size:12px;
+margin-bottom:14px;
+color:#f3e8ff;
+}
+
+.poster-row{
+display:flex;
+gap:10px;
+}
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+
+.news-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.discussion-row{
+grid-template-columns:repeat(2,1fr);
+}
+
+.trending-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:700px){
+
+header{
+flex-wrap:wrap;
+}
+
+.categories{
+grid-template-columns:repeat(2,1fr);
+}
+
+.news-grid,
+.discussion-row,
+.trending-grid{
+grid-template-columns:1fr;
+}
+
+.logo-title{
+font-size:28px;
+}
+
+}
+.search-results{
+position:absolute;
+top:54px;
+left:0;
+width:100%;
+background:#0b0612;
+border:1px solid #3f145e;
+border-radius:18px;
+overflow:hidden;
+display:none;
+z-index:1000;
+box-shadow:0 0 30px rgba(217,70,239,0.25);
+}
+
+.search-item{
+display:flex;
+align-items:center;
+gap:14px;
+padding:12px;
+cursor:pointer;
+transition:0.3s;
+border-bottom:1px solid #241031;
+}
+
+.search-item:hover{
+background:#1a0d26;
+}
+.search-item img{
+width:52px;
+height:74px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.search-info h4{
+font-size:14px;
+margin-bottom:6px;
+}
+
+.search-info p{
+font-size:12px;
+color:#c4b5fd;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+<div class="left-header" id="homeBtn">
+<div class="logo-circle">F</div>
+<div class="logo-title"><span class="find">FIND</span><span class="ra">RA</span></div>
+</div>
+
+<div class="search-bar">
+<input id="searchInput" type="text" placeholder="Search anime, movies, series...">
+<i class="fa-solid fa-magnifying-glass"></i>
+
+<div class="search-results" id="searchResults"></div>
+</div>
+
+
+
+<div class="header-icons">
+<i class="fa-regular fa-user" id="profileBtn"></i>
+</div>
+</header>
+
+<div class="categories">
+
+<div class="category active" onclick="filterCategory('all', this)">
+All
+</div>
+
+<div class="category" onclick="filterCategory('anime', this)">
+Anime
+</div>
+
+<div class="category" onclick="filterCategory('movie', this)">
+Movies
+</div>
+
+<div class="category" onclick="filterCategory('series', this)">
+Series
+</div>
+
+<div class="category" onclick="filterCategory('cartoon', this)">
+Cartoons
+</div>
+
+</div>
+<!-- NEWS -->
+<section class="section">
+<div class="section-header">
+<div class="section-title">NEWS</div>
+<div class="more" onclick="openMore()">More →</div>
+</div>
+
+<div class="news-grid" id="newsGrid">
+
+<div class="news-card anime" onclick="openNews('solo-leveling-season2')">
+<div class="news-image" style="background-image:url('https://images.unsplash.com/photo-1518877593221-1f28583780b4?auto=format&fit=crop&w=900&q=80')"></div>
+
+<div class="news-overlay"></div>
+
+<div class="news-content">
+<div class="badge">ANIME</div>
+<span>May 20, 2024</span>
+<h3>Solo Leveling Season 2 Officially Announced</h3>
+<p>The highly anticipated second season is confirmed for 2025.</p>
+</div>
+</div>
+
+<div class="news-card movie" onclick="openPage('oppenheimer')">
+<div class="news-image" style="background-image:url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=900&q=80')"></div>
+
+<div class="news-overlay"></div>
+
+<div class="news-content">
+<div class="badge">MOVIE</div>
+<span>May 18, 2024</span>
+<h3>Oppenheimer Wins Big at the 96th Oscars</h3>
+<p>Christopher Nolan’s masterpiece dominated the awards.</p>
+</div>
+</div>
+
+<div class="news-card series" onclick="openPage('last-of-us')">
+<div class="news-image" style="background-image:url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=900&q=80')"></div>
+
+<div class="news-overlay"></div>
+
+<div class="news-content">
+<div class="badge">SERIES</div>
+<span>May 10, 2024</span>
+<h3>The Last of Us Season 2 Begins Production</h3>
+<p>HBO confirms the start of filming for the new season.</p>
+</div>
+</div>
+
+<div class="news-card cartoon" onclick="openPage('spiderverse')">
+<div class="news-image" style="background-image:url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=900&q=80')"></div>
+
+<div class="news-overlay"></div>
+
+<div class="news-content">
+<div class="badge">CARTOON</div>
+<span>May 4, 2024</span>
+<h3>Spider-Verse 3 Gets Official Release Window</h3>
+<p>The next chapter arrives in theaters in 2026.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+
+<!-- DISCUSSIONS -->
+<section class="section">
+<div class="section-header">
+<div class="section-title">DISCUSSIONS</div>
+<div class="more" onclick="openOther()">Other →</div>
+</div>
+
+<div class="discussion-row">
+
+<div class="discussion-card" onclick="openPage('anime-discussion')">
+<div class="discussion-top">
+<div class="avatar" style="background-image:url('https://i.pravatar.cc/100?img=32');background-size:cover"></div>
+
+<div>
+<h4>What anime blew your mind this season?</h4>
+<div class="discussion-category">Anime</div>
+
+<div class="discussion-stats">
+<span>💬 1.2K</span>
+<span>👁 540</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="discussion-card" onclick="openPage('movies-discussion')">
+<div class="discussion-top">
+<div class="avatar" style="background-image:url('https://i.pravatar.cc/100?img=12');background-size:cover"></div>
+
+<div>
+<h4>Best movies of 2024 so far?</h4>
+<div class="discussion-category">Movies</div>
+
+<div class="discussion-stats">
+<span>💬 867</span>
+<span>👁 215</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="discussion-card" onclick="openPage('series-discussion')">
+<div class="discussion-top">
+<div class="avatar" style="background-image:url('https://i.pravatar.cc/100?img=22');background-size:cover"></div>
+
+<div>
+<h4>What are your theories for TLOU S2?</h4>
+<div class="discussion-category">Series</div>
+
+<div class="discussion-stats">
+<span>💬 550</span>
+<span>👁 188</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="discussion-card" onclick="openPage('cartoon-discussion')">
+<div class="discussion-top">
+<div class="avatar" style="background-image:url('https://i.pravatar.cc/100?img=5');background-size:cover"></div>
+
+<div>
+<h4>Which cartoon had the best comeback?</h4>
+<div class="discussion-category">Cartoon</div>
+
+<div class="discussion-stats">
+<span>💬 642</span>
+<span>👁 113</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="discussion-card start-discussion" onclick="startDiscussion()">
+<h4>Start a Discussion</h4>
+<p>Share your thoughts with the community!</p>
+</div>
+
+</div>
+</section>
+
+
+<!-- TRENDING -->
+<section class="section">
+<div class="section-header">
+<div class="section-title">TRENDING THIS MONTH</div>
+<div class="more" onclick="openExplore()">Explore →</div>
+</div>
+
+<div class="trending-grid">
+
+<div class="trending-box">
+<h3>Most Added to Favorites ♡</h3>
+
+<div class="poster-row">
+<div class="poster" style="background-image:url('https://images.unsplash.com/photo-1514320291840-2e0a9bf2f7de?auto=format&fit=crop&w=400&q=80')"><span>1</span></div>
+
+<div class="poster" style="background-image:url('https://images.unsplash.com/photo-1522120692754-5f7f6f9d0efc?auto=format&fit=crop&w=400&q=80')"><span>2</span></div>
+
+<div class="poster" style="background-image:url('https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=400&q=80')"><span>3</span></div>
+
+<div class="poster" style="background-image:url('https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=400&q=80')"><span>4</span></div>
+
+<div class="poster" style="background-image:url('https://images.unsplash.com/photo-1509347528160-9f0e0c7f2b23?auto=format&fit=crop&w=400&q=80')"><span>5</span></div>
+</div>
+</div>
+
+
+<div class="trending-box">
+<h3>Most Discussed 💬</h3>
+
+<div class="poster-row">
+<div class="poster" style="background-image:url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80')"><span>1</span></div>
+
+<div class="poster" style="background-image:url('https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=400&q=80')"><span>2</span></div>
+
+<div class="poster" style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=80')"><span>3</span></div>
+
+<div class="poster" style="background-image:url('https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=400&q=80')"><span>4</span></div>
+
+<div class="poster" style="background-image:url('https://images.unsplash.com/photo-1511884642898-4c92249e20b6?auto=format&fit=crop&w=400&q=80')"><span>5</span></div>
+</div>
+</div>
+
+
+<div class="trending-box">
+<h3>Most Popular Views 👁</h3>
+
+<div class="poster-row">
+<div class="poster" style="background-image:url('https://images.unsplash.com/photo-1502126823237-6f1db7b1a6de?auto=format&fit=crop&w=400&q=80')"><span>1</span></div>
+
+<div class="poster" style="background-image:url('https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=400&q=80')"><span>2</span></div>
+
+<div class="poster" style="background-image:url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80')"><span>3</span></div>
+
+<div class="poster" style="background-image:url('https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=400&q=80')"><span>4</span></div>
+
+<div class="poster" style="background-image:url('https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&w=400&q=80')"><span>5</span></div>
+</div>
+</section>
+
+
+</div>
+<div class="footer">
+© 2026 FINDRA — All Rights Reserved
+</div>
+
+<script>
+
+// SEARCH FUNCTION
+const searchInput = document.getElementById('searchInput');
+searchInput.addEventListener('input', function(){
+let value = this.value.toLowerCase();
+let cards = document.querySelectorAll('.news-card, .discussion-card');
+cards.forEach(card=>{
+let text = card.innerText.toLowerCase();
+card.style.display = text.includes(value) ? 'block' : 'none';
+});
+});
+
+// PROFILE PAGE
+document.getElementById('profileBtn').addEventListener('click',()=>{
+window.location.href = 'profile.html';
+});
+
+// HOME CLICK
+document.getElementById('homeBtn').addEventListener('click',()=>{
+window.location.href = 'index.html';
+});
+
+// OPEN NEWS / DISCUSSION FUNCTION
+function openPage(page){
+window.location.href = page + '.html';
+}
+
+function openNews(news){
+window.location.href='news-details.html?news='+news;
+}
+
+
+
+function openExplore(){
+window.location.href='trending.html';
+}
+
+function openMore(){
+window.location.href='news.html';
+}
+
+function openOther(){
+window.location.href='discussions.html';
+}
+
+function startDiscussion(){
+window.location.href='start-discussion.html';
+}
+
+function filterCategory(category, element){
+
+const cards = document.querySelectorAll('.news-card');
+
+cards.forEach(card=>{
+
+if(category === 'all'){
+card.style.display = 'block';
+}
+else if(card.classList.contains(category)){
+card.style.display = 'block';
+}
+else{
+card.style.display = 'none';
+}
+
+});
+
+/* ACTIVE BUTTON */
+
+document.querySelectorAll('.category').forEach(btn=>{
+btn.classList.remove('active');
+});
+
+element.classList.add('active');
+
+}
+</script>
+<script>
+const titles=[
+{
+name:'Solo Leveling',
+category:'Anime',
+image:'https://picsum.photos/200/300?1',
+page:'solo-leveling'
+},
+{
+name:'One Piece',
+category:'Anime',
+image:'https://picsum.photos/200/300?2',
+page:'one-piece'
+},
+{
+name:'Oppenheimer',
+category:'Movie',
+image:'https://picsum.photos/200/300?3',
+page:'oppenheimer'
+},
+{
+name:'Breaking Bad',
+category:'Series',
+image:'https://picsum.photos/200/300?4',
+page:'breaking-bad'
+},
+{
+name:'Spider-Verse',
+category:'Movie',
+image:'https://picsum.photos/200/300?5',
+page:'spider-verse'
+},
+{
+name:'Naruto',
+category:'Anime',
+image:'https://picsum.photos/200/300?6',
+page:'naruto'
+},
+{
+name:'Avatar 3',
+category:'Movie',
+image:'https://picsum.photos/200/300?7',
+page:'avatar-3'
+},
+{
+name:'The Last of Us',
+category:'Series',
+image:'https://picsum.photos/200/300?8',
+page:'the-last-of-us'
+}
+];
+
+const input=document.querySelector('.search-bar input');
+const results=document.getElementById('searchResults');
+
+input.addEventListener('input',()=>{
+const value=input.value.toLowerCase().trim();
+
+if(value===''){
+results.style.display='none';
+return;
+}
+const filtered=titles.filter(title=>
+title.name.toLowerCase().includes(value)
+);
+
+if(filtered.length===0){
+results.innerHTML=`
+<div class="search-item">
+<div class="search-info">
+<h4>Nothing found</h4>
+<p>Try another title</p>
+</div>
+</div>
+`;
+results.style.display='block';
+return;
+}
+
+results.innerHTML='';
+
+filtered.forEach(title=>{
+results.innerHTML+=`
+<div class="search-item" onclick="openTitle('${title.page}')">
+<img src="${title.image}">
+<div class="search-info">
+<h4>${title.name}</h4>
+<p>${title.category}</p>
+</div>
+</div>
+`;
+});
+results.style.display='block';
+});
+
+function openTitle(page){
+window.location.href='title.html?name='+page;
+}
+
+window.addEventListener('click',(e)=>{
+if(!e.target.closest('.search-bar') && !e.target.closest('.search-results')){
+results.style.display='none';
+}
+});
+</script>
+
+</body>
+</html>

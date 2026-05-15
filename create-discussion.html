@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FINDRA — Create Discussion</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:#05010b;
+color:white;
+padding:20px;
+background:
+radial-gradient(circle at top left, rgba(217,70,239,.15), transparent 30%),
+#05010b;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:28px;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:14px;
+cursor:pointer;
+}
+
+.logo-circle{
+width:56px;
+height:56px;
+border-radius:50%;
+background:linear-gradient(135deg,#ff7de7,#9333ea);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:34px;
+font-weight:800;
+box-shadow:0 0 25px #d946ef;
+}
+
+.logo-title{
+font-size:34px;
+font-weight:900;
+}
+
+.find{
+color:white;
+text-shadow:0 0 18px rgba(217,70,239,.7);
+}
+
+.ra{
+color:#c084fc;
+opacity:.75;
+}
+
+.back-btn{
+width:48px;
+height:48px;
+border-radius:14px;
+background:#12071c;
+border:1px solid #4b136d;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
+color:#f0abfc;
+cursor:pointer;
+}
+
+.form-box{
+background:#0a0412;
+border:1px solid #311046;
+border-radius:28px;
+padding:28px;
+}
+
+.page-title{
+font-size:42px;
+font-weight:900;
+margin-bottom:12px;
+}
+
+.page-subtitle{
+font-size:15px;
+line-height:1.7;
+color:#c4b5fd;
+margin-bottom:30px;
+}
+
+.field{
+margin-bottom:24px;
+}
+
+.field label{
+display:block;
+font-size:15px;
+font-weight:700;
+margin-bottom:12px;
+}
+
+input,
+select,
+textarea{
+width:100%;
+background:#12071c;
+border:1px solid #4b136d;
+border-radius:18px;
+padding:18px;
+font-size:15px;
+color:white;
+outline:none;
+font-family:'Inter',sans-serif;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+border-color:#d946ef;
+box-shadow:0 0 18px rgba(217,70,239,.2);
+}
+
+textarea{
+height:220px;
+resize:none;
+line-height:1.7;
+}
+
+.publish-btn{
+height:56px;
+padding:0 28px;
+border:none;
+border-radius:18px;
+background:linear-gradient(135deg,#d946ef,#9333ea);
+color:white;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+box-shadow:0 0 22px rgba(217,70,239,.35);
+transition:.2s;
+}
+
+.publish-btn:hover{
+transform:translateY(-2px);
+}
+
+.success-box{
+display:none;
+margin-top:22px;
+padding:18px;
+border-radius:18px;
+background:rgba(34,197,94,.1);
+border:1px solid rgba(34,197,94,.3);
+color:#bbf7d0;
+font-size:15px;
+}
+
+.preview-box{
+margin-top:30px;
+padding:22px;
+border-radius:22px;
+background:#12071c;
+border:1px solid #4b136d;
+}
+
+.preview-box h3{
+font-size:24px;
+margin-bottom:12px;
+}
+
+.preview-category{
+display:inline-block;
+padding:6px 12px;
+border-radius:999px;
+background:rgba(217,70,239,.15);
+border:1px solid rgba(217,70,239,.3);
+color:#f0abfc;
+font-size:12px;
+font-weight:700;
+margin-bottom:16px;
+}
+
+.preview-text{
+font-size:15px;
+line-height:1.8;
+color:#d4d4d8;
+}
+
+@media(max-width:700px){
+.page-title{
+font-size:30px;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+<div class="logo" onclick="goHome()">
+<div class="logo-circle">F</div>
+<div class="logo-title">
+<span class="find">FIND</span><span class="ra">RA</span>
+</div>
+</div>
+
+<div class="back-btn" onclick="goBack()">
+<i class="fa-solid fa-arrow-left"></i>
+</div>
+</header>
+
+<section class="form-box">
+<h1 class="page-title">Create Discussion</h1>
+
+<p class="page-subtitle">
+Start a new conversation with the FINDRA community. Share your opinions, theories and favorite titles.
+</p>
+
+<div class="field">
+<label>Discussion Title</label>
+<input type="text" id="discussionTitle" placeholder="What anime impressed you the most this season?">
+</div>
+
+<div class="field">
+<label>Category</label>
+<select id="discussionCategory">
+<option>Anime</option>
+<option>Movies</option>
+<option>Series</option>
+<option>Cartoons</option>
+</select>
+</div>
+
+<div class="field">
+<label>Description</label>
+<textarea id="discussionText" placeholder="Write your discussion here..."></textarea>
+</div>
+
+<button class="publish-btn" onclick="publishDiscussion()">
+Create Discussion
+</button>
+
+<div class="success-box" id="successBox">
+Discussion successfully created.
+</div>
+
+<div class="preview-box" id="previewBox" style="display:none">
+<div class="preview-category" id="previewCategory">Anime</div>
+<h3 id="previewTitle">Discussion Title</h3>
+<p class="preview-text" id="previewText"></p>
+</div>
+
+</section>
+
+</div>
+
+<script>
+function publishDiscussion(){
+
+const title = document.getElementById('discussionTitle').value.trim();
+const category = document.getElementById('discussionCategory').value;
+const text = document.getElementById('discussionText').value.trim();
+
+if(title === '' || text === ''){
+alert('Fill all fields');
+return;
+}
+
+const discussion = {
+title:title,
+category:category,
+text:text
+};
+
+localStorage.setItem('findraNewDiscussion', JSON.stringify(discussion));
+
+window.location.href = 'discussion-details.html?discussion=user-discussion';
+
+}
+
+function goHome(){
+window.location.href='index.html';
+}
+
+function goBack(){
+window.history.back();
+}
+</script>
+
+</body>
+</html>
