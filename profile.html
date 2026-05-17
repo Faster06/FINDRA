@@ -397,6 +397,22 @@ window.location.href='index.html';
 function openPage(page){
   window.location.href = 'title.html?name=' + page;
 }
+const user =
+JSON.parse(localStorage.getItem('findraUser'));
+
+if(!user){
+window.location.href='login.html';
+}
+
+document.getElementById('username').innerText =
+user.login;
+function logout(){
+
+localStorage.removeItem('findraUser');
+
+window.location.href='index.html';
+
+}
 </script>
 </body>
 </html>
