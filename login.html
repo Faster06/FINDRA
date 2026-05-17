@@ -110,6 +110,11 @@ id="password">
 Sign In
 </button>
 
+  <p class="switch-text">
+Don't have an account?
+<span onclick="goRegister()">Create Account</span>
+</p>
+
 </div>
 
 <script>
@@ -138,6 +143,10 @@ JSON.stringify(user)
 
 window.location.href='profile.html';
 
+}
+
+  function goRegister(){
+window.location.href='register.html';
 }
 
 </script>
