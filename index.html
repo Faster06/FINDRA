@@ -842,7 +842,16 @@ card.style.display = text.includes(value) ? 'block' : 'none';
 
 // PROFILE PAGE
 document.getElementById('profileBtn').addEventListener('click',()=>{
-window.location.href = 'profile.html';
+
+const user =
+localStorage.getItem('findraUser');
+
+if(user){
+window.location.href='profile.html';
+}else{
+window.location.href='login.html';
+}
+
 });
 
 // HOME CLICK
