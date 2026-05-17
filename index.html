@@ -485,16 +485,25 @@ gap:10px;
 /* RESPONSIVE */
 
 @media(max-width:1100px){
+
+.news-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.discussion-row{
+grid-template-columns:repeat(2,1fr);
+}
+
 .trending-grid{
 grid-template-columns:1fr;
 }
+
 }
 
-
 @media(max-width:700px){
+
 header{
-flex-direction:column;
-align-items:flex-start;
+flex-wrap:wrap;
 }
 
 
