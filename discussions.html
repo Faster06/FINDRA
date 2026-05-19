@@ -219,6 +219,33 @@ cursor:pointer;
 transform:translateY(-4px);
 box-shadow:0 0 24px rgba(217,70,239,0.25);
 }
+.discussion-card{
+position:relative;
+}
+
+.delete-btn{
+position:absolute;
+top:14px;
+right:14px;
+width:38px;
+height:38px;
+border:none;
+border-radius:12px;
+background:rgba(239,68,68,.12);
+border:1px solid rgba(239,68,68,.25);
+color:#f87171;
+cursor:pointer;
+transition:.25s;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.delete-btn:hover{
+background:#ef4444;
+color:white;
+transform:scale(1.05);
+}
 
 .discussion-top{
 display:flex;
@@ -540,6 +567,13 @@ grid.innerHTML += `
 
 <div class="discussion-card ${discussion.category} ${discussion.type}">
 
+${discussion.type === 'mine' ? `
+<button class="delete-btn"
+onclick="deleteDiscussion(${index})">
+<i class="fa-solid fa-trash"></i>
+</button>
+` : ''}
+
 <div class="discussion-top">
 
 <div class="avatar">
@@ -569,10 +603,28 @@ ${discussion.text}
 </div>
 
 `;
-
 });
 
 updateDiscussions();
+
+}
+     function deleteDiscussion(index){
+
+if(!confirm('Delete discussion?')){
+return;
+}
+
+let discussions =
+JSON.parse(localStorage.getItem('findraDiscussions')) || [];
+
+discussions.splice(index,1);
+
+localStorage.setItem(
+'findraDiscussions',
+JSON.stringify(discussions)
+);
+
+location.reload();
 
 }
   
