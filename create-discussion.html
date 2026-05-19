@@ -273,26 +273,63 @@ Discussion successfully created.
 </div>
 
 <script>
+
 function publishDiscussion(){
 
-const title = document.getElementById('discussionTitle').value.trim();
-const category = document.getElementById('discussionCategory').value;
-const text = document.getElementById('discussionText').value.trim();
+const title =
+document.getElementById('discussionTitle')
+.value
+.trim();
+
+const category =
+document.getElementById('discussionCategory')
+.value
+.toLowerCase();
+
+const text =
+document.getElementById('discussionText')
+.value
+.trim();
 
 if(title === '' || text === ''){
 alert('Fill all fields');
 return;
 }
 
-const discussion = {
+const newDiscussion = {
+
 title:title,
 category:category,
-text:text
+text:text,
+
+user:'You',
+time:'Just now',
+
+comments:'0',
+views:'0',
+
+type:'mine'
+
 };
 
-localStorage.setItem('findraNewDiscussion', JSON.stringify(discussion));
+let discussions =
+JSON.parse(localStorage.getItem('findraDiscussions')) || [];
 
-window.location.href = 'discussion-details.html?discussion=user-discussion';
+discussions.unshift(newDiscussion);
+
+localStorage.setItem(
+'findraDiscussions',
+JSON.stringify(discussions)
+);
+
+document.getElementById('successBox')
+.style.display='block';
+
+setTimeout(()=>{
+
+window.location.href='discussions.html';
+
+},1000);
 
 }
 
@@ -303,7 +340,7 @@ window.location.href='index.html';
 function goBack(){
 window.history.back();
 }
-</script>
 
+</script>
 </body>
 </html>
