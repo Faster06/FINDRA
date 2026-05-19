@@ -542,12 +542,14 @@ window.location.href='open-discussion.html?name=' + page;
 }
 
 let currentDiscussionType = 'all-users';
+let currentCategory = 'all';
 
 function switchDiscussionType(type,event){
 
 currentDiscussionType = type;
 
-const switchButtons = document.querySelectorAll('.switch-btn');
+const switchButtons =
+document.querySelectorAll('.switch-btn');
 
 switchButtons.forEach(btn=>{
 btn.classList.remove('active');
@@ -560,7 +562,10 @@ updateDiscussions();
 
 function filterDiscussions(category,event){
 
-const buttons = document.querySelectorAll('.filter-btn');
+currentCategory = category;
+
+const buttons =
+document.querySelectorAll('.filter-btn');
 
 buttons.forEach(btn=>{
 btn.classList.remove('active');
@@ -573,78 +578,55 @@ updateDiscussions();
 
 function updateDiscussions(){
 
-const cards = document.querySelectorAll('.discussion-card');
+const cards =
+document.querySelectorAll('.discussion-card');
 
-const activeCategory =
-document.querySelector('.filter-btn.active')
-.textContent
+const searchValue =
+document.getElementById('searchInput')
+.value
 .toLowerCase();
 
 cards.forEach(card=>{
 
-const isMine = card.classList.contains('mine');
+const text =
+card.innerText.toLowerCase();
+
+const isMine =
+card.classList.contains('mine');
 
 const categoryMatch =
-activeCategory === 'all'
-|| card.classList.contains(activeCategory);
+currentCategory === 'all'
+|| card.classList.contains(currentCategory);
 
-const userMatch =
-currentDiscussionType === 'all-users'
-|| isMine;
+let userMatch = true;
 
-if(categoryMatch && userMatch){
-card.style.display='block';
+if(currentDiscussionType === 'my'){
+userMatch = isMine;
+}
+
+const searchMatch =
+text.includes(searchValue);
+
+if(categoryMatch && userMatch && searchMatch){
+
+card.style.display = 'block';
+
 }else{
-card.style.display='none';
+
+card.style.display = 'none';
+
 }
 
 });
 
 }
 
-const searchInput = document.getElementById('searchInput');
+const searchInput =
+document.getElementById('searchInput');
 
-searchInput.addEventListener('input',function(){
-
-const value = this.value.toLowerCase();
-
-const cards = document.querySelectorAll('.discussion-card');
-
-cards.forEach(card=>{
-
-const text = card.innerText.toLowerCase();
-
-const isMine = card.classList.contains('mine');
-
-const activeCategory =
-document.querySelector('.filter-btn.active')
-.textContent
-.toLowerCase();
-
-const categoryMatch =
-activeCategory === 'all'
-|| card.classList.contains(activeCategory);
-
-const userMatch =
-currentDiscussionType === 'all-users'
-|| isMine;
-
-if(
-text.includes(value)
-&& categoryMatch
-&& userMatch
-){
-card.style.display='block';
-}else{
-card.style.display='none';
-}
-
-});
-
-});
+searchInput.addEventListener('input',updateDiscussions);
 
 </script>
-
 </body>
 </html>
 
