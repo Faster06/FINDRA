@@ -1,13 +1,17 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FINDRA — Discussions</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -141,10 +145,43 @@ transition:0.3s;
 transform:translateY(-2px);
 }
 
+.top-filters{
+display:flex;
+flex-direction:column;
+gap:18px;
+margin-bottom:24px;
+}
+
+.discussion-switch{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.switch-btn{
+display:flex;
+align-items:center;
+gap:10px;
+padding:11px 18px;
+background:#12071c;
+border:1px solid #4b136d;
+border-radius:14px;
+color:#f3e8ff;
+cursor:pointer;
+transition:0.3s;
+font-size:14px;
+font-weight:600;
+}
+
+.switch-btn.active,
+.switch-btn:hover{
+background:#a21caf;
+box-shadow:0 0 18px rgba(217,70,239,0.35);
+}
+
 .filter-row{
 display:flex;
 gap:12px;
-margin-bottom:24px;
 flex-wrap:wrap;
 }
 
@@ -233,49 +270,16 @@ font-size:13px;
 color:#f0abfc;
 }
 
-.start-discussion{
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-text-align:center;
-min-height:320px;
-}
-
-.start-discussion i{
-font-size:58px;
-margin-bottom:18px;
-color:#f0abfc;
-}
-
-.start-discussion h3{
-font-size:22px;
-margin-bottom:10px;
-}
-
-.start-discussion p{
-font-size:14px;
-color:#c4b5fd;
-margin-bottom:18px;
-}
-
-.start-discussion button{
-padding:12px 20px;
-background:#a21caf;
-border:none;
-border-radius:14px;
-color:white;
-font-weight:600;
-cursor:pointer;
-}
-
 @media(max-width:1100px){
+
 .discussions-grid{
 grid-template-columns:repeat(2,1fr);
 }
+
 }
 
 @media(max-width:700px){
+
 header{
 flex-direction:column;
 align-items:flex-start;
@@ -295,7 +299,9 @@ gap:14px;
 .discussions-grid{
 grid-template-columns:1fr;
 }
+
 }
+
 </style>
 </head>
 <body>
@@ -303,8 +309,10 @@ grid-template-columns:1fr;
 <div class="container">
 
 <header>
+
 <div class="left-header" onclick="goHome()">
 <div class="logo-circle">F</div>
+
 <div class="logo-title">
 <span class="find">FIND</span><span class="ra">RA</span>
 </div>
@@ -312,144 +320,216 @@ grid-template-columns:1fr;
 
 <div class="search-bar">
 <input type="text" id="searchInput" placeholder="Search discussions...">
-<i class="fa-solid fa-magnifying-glass"></i> 
+<i class="fa-solid fa-magnifying-glass"></i>
 </div>
 
 <div class="back-btn" onclick="goHome()">
 <i class="fa-solid fa-arrow-left"></i>
 </div>
+
 </header>
 
 <div class="page-header">
+
 <h1 class="page-title">Community Discussions</h1>
-<button class="start-btn" onclick="startDiscussion()">Creat Discussion</button>
+
+<button class="start-btn" onclick="startDiscussion()">
+Create Discussion
+</button>
+
+</div>
+
+<div class="top-filters">
+
+<div class="discussion-switch">
+
+<div class="switch-btn active" onclick="switchDiscussionType('all-users',event)">
+<i class="fa-solid fa-comments"></i>
+<span>Discussions</span>
+</div>
+
+<div class="switch-btn" onclick="switchDiscussionType('my',event)">
+<i class="fa-solid fa-user"></i>
+<span>My</span>
+</div>
+
 </div>
 
 <div class="filter-row">
-<div class="filter-btn active" onclick="filterDiscussions('all',event)">All</div>
-<div class="filter-btn" onclick="filterDiscussions('anime',event)">Anime</div>
-<div class="filter-btn" onclick="filterDiscussions('movie',event)">Movies</div>
-<div class="filter-btn" onclick="filterDiscussions('series',event)">Series</div>
-<div class="filter-btn" onclick="filterDiscussions('cartoons',event)">Cartoons</div>
+
+<div class="filter-btn active" onclick="filterDiscussions('all',event)">
+All
 </div>
 
+<div class="filter-btn" onclick="filterDiscussions('anime',event)">
+Anime
+</div>
+
+<div class="filter-btn" onclick="filterDiscussions('movies',event)">
+Movies
+</div>
+
+<div class="filter-btn" onclick="filterDiscussions('series',event)">
+Series
+</div>
+
+<div class="filter-btn" onclick="filterDiscussions('cartoons',event)">
+Cartoons
+</div>
+
+</div>
+
+</div>
 
 <div class="discussions-grid">
 
-<div class="discussion-card anime" onclick="openDiscussion('anime-discussion')">
+<div class="discussion-card anime public" onclick="openDiscussion('anime-discussion')">
+
 <div class="discussion-top">
+
 <div class="avatar">A</div>
+
 <div class="user-info">
 <h4>Alex Mercer</h4>
 <span>2 hours ago</span>
 </div>
+
 </div>
 
-<h2 class="discussion-title">What anime completely changed your taste forever?</h2>
+<h2 class="discussion-title">
+What anime completely changed your taste forever?
+</h2>
 
 <p class="discussion-text">
-Some anime completely redefine what you expect from storytelling and animation. Which one had the biggest impact on you?
+Some anime completely redefine storytelling and animation.
+Which one had the biggest impact on you?
 </p>
 
 <div class="discussion-stats">
-
 <span>💬 328</span>
 <span>👁 19K</span>
 </div>
+
 </div>
 
-<div class="discussion-card movies" onclick="openDiscussion('movies-discussion')">
+<div class="discussion-card movies public" onclick="openDiscussion('movies-discussion')">
+
 <div class="discussion-top">
+
 <div class="avatar">M</div>
+
 <div class="user-info">
 <h4>Mia Carter</h4>
 <span>5 hours ago</span>
 </div>
+
 </div>
 
-<h2 class="discussion-title">Best movie cinematography you've ever seen?</h2>
+<h2 class="discussion-title">
+Best movie cinematography you've ever seen?
+</h2>
 
 <p class="discussion-text">
-From Blade Runner to Oppenheimer, some movies are visual masterpieces. Which film impressed you the most visually?
+From Blade Runner to Oppenheimer, some movies are visual masterpieces.
 </p>
 
 <div class="discussion-stats">
-
 <span>💬 214</span>
 <span>👁 12K</span>
 </div>
+
 </div>
 
-<div class="discussion-card series" onclick="openDiscussion('series-discussion')">
+<div class="discussion-card series public" onclick="openDiscussion('series-discussion')">
+
 <div class="discussion-top">
+
 <div class="avatar">S</div>
+
 <div class="user-info">
 <h4>Sophia Lee</h4>
 <span>Yesterday</span>
 </div>
+
 </div>
 
-<h2 class="discussion-title">Which series had the best final season?</h2>
+<h2 class="discussion-title">
+Which series had the best final season?
+</h2>
 
 <p class="discussion-text">
-Many shows fail their endings, but some deliver legendary finales. Which series ended perfectly in your opinion?
+Some shows fail their endings, but some deliver legendary finales.
 </p>
 
 <div class="discussion-stats">
-
 <span>💬 189</span>
 <span>👁 8K</span>
 </div>
+
 </div>
 
-<div class="discussion-card cartoons" onclick="openDiscussion('cartoon-discussion')">
+<div class="discussion-card cartoons public" onclick="openDiscussion('cartoon-discussion')">
+
 <div class="discussion-top">
+
 <div class="avatar">J</div>
+
 <div class="user-info">
 <h4>Jason Hill</h4>
 <span>2 days ago</span>
 </div>
+
 </div>
 
-<h2 class="discussion-title">Cartoons that are secretly made for adults?</h2>
+<h2 class="discussion-title">
+Cartoons that are secretly made for adults?
+</h2>
 
 <p class="discussion-text">
-Some cartoons look simple but contain deep stories and mature themes. Which animated show surprised you the most?
+Some cartoons contain deep stories and mature themes.
 </p>
 
 <div class="discussion-stats">
-
 <span>💬 143</span>
 <span>👁 6K</span>
 </div>
+
 </div>
 
-<div class="discussion-card anime" onclick="openDiscussion('one-piece-discussion')">
+<div class="discussion-card anime mine" onclick="openDiscussion('one-piece-discussion')">
+
 <div class="discussion-top">
+
 <div class="avatar">K</div>
+
 <div class="user-info">
-<h4>Kaito</h4>
+<h4>You</h4>
 <span>3 days ago</span>
 </div>
+
 </div>
 
-<h2 class="discussion-title">Will One Piece actually end in the next few years?</h2>
+<h2 class="discussion-title">
+Will One Piece actually end in the next few years?
+</h2>
 
 <p class="discussion-text">
-Oda confirmed the final saga, but fans still debate how long the journey will continue.
+Oda confirmed the final saga, but fans still debate how long it will continue.
 </p>
 
 <div class="discussion-stats">
-
 <span>💬 401</span>
 <span>👁 25K</span>
 </div>
+
 </div>
+
 </div>
 
 </div>
 
 <script>
+
 function goHome(){
 window.location.href='index.html';
 }
@@ -459,49 +539,113 @@ window.location.href='create-discussion.html';
 }
 
 function openDiscussion(page){
-  window.location.href = 'open-discussion.html?name=' + page;
+window.location.href='open-discussion.html?name=' + page;
 }
 
-function filterDiscussions(category, event){
-  const cards = document.querySelectorAll('.discussion-card');
-  const buttons = document.querySelectorAll('.filter-btn');
+let currentDiscussionType = 'all-users';
 
-  buttons.forEach(btn => btn.classList.remove('active'));
+function switchDiscussionType(type,event){
 
-  if(event){
-    event.target.classList.add('active');
-  }
+currentDiscussionType = type;
 
-  cards.forEach(card => {
-    if(category === 'all'){
-      card.style.display = 'block';
-    } else if(card.classList.contains(category)){
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
-  });
+const switchButtons = document.querySelectorAll('.switch-btn');
+
+switchButtons.forEach(btn=>{
+btn.classList.remove('active');
+});
+
+event.currentTarget.classList.add('active');
+
+updateDiscussions();
+}
+
+function filterDiscussions(category,event){
+
+const buttons = document.querySelectorAll('.filter-btn');
+
+buttons.forEach(btn=>{
+btn.classList.remove('active');
+});
+
+event.currentTarget.classList.add('active');
+
+updateDiscussions();
+}
+
+function updateDiscussions(){
+
+const cards = document.querySelectorAll('.discussion-card');
+
+const activeCategory =
+document.querySelector('.filter-btn.active')
+.textContent
+.toLowerCase();
+
+cards.forEach(card=>{
+
+const isMine = card.classList.contains('mine');
+
+const categoryMatch =
+activeCategory === 'all'
+|| card.classList.contains(activeCategory);
+
+const userMatch =
+currentDiscussionType === 'all-users'
+|| isMine;
+
+if(categoryMatch && userMatch){
+card.style.display='block';
+}else{
+card.style.display='none';
+}
+
+});
+
 }
 
 const searchInput = document.getElementById('searchInput');
 
-searchInput.addEventListener('input', function(){
-  const value = this.value.toLowerCase();
-  const cards = document.querySelectorAll('.discussion-card');
+searchInput.addEventListener('input',function(){
 
-  cards.forEach(card => {
-    const text = card.innerText.toLowerCase();
+const value = this.value.toLowerCase();
 
-    if(text.includes(value)){
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
-  });
+const cards = document.querySelectorAll('.discussion-card');
+
+cards.forEach(card=>{
+
+const text = card.innerText.toLowerCase();
+
+const isMine = card.classList.contains('mine');
+
+const activeCategory =
+document.querySelector('.filter-btn.active')
+.textContent
+.toLowerCase();
+
+const categoryMatch =
+activeCategory === 'all'
+|| card.classList.contains(activeCategory);
+
+const userMatch =
+currentDiscussionType === 'all-users'
+|| isMine;
+
+if(
+text.includes(value)
+&& categoryMatch
+&& userMatch
+){
+card.style.display='block';
+}else{
+card.style.display='none';
+}
+
 });
+
+});
+
 </script>
-
-
 
 </body>
 </html>
+```
