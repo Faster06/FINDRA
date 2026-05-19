@@ -830,16 +830,7 @@ Cartoons
 
 <script>
 
-// SEARCH FUNCTION
-const searchInput = document.getElementById('searchInput');
-searchInput.addEventListener('input', function(){
-let value = this.value.toLowerCase();
-let cards = document.querySelectorAll('.news-card, .discussion-card');
-cards.forEach(card=>{
-let text = card.innerText.toLowerCase();
-card.style.display = text.includes(value) ? 'block' : 'none';
-});
-});
+
 
 // PROFILE PAGE
 document.getElementById('profileBtn').addEventListener('click',()=>{
