@@ -380,153 +380,8 @@ Cartoons
 
 </div>
 
-<div class="discussions-grid">
-
-<div class="discussion-card anime public" onclick="openDiscussion('anime-discussion')">
-
-<div class="discussion-top">
-
-<div class="avatar">A</div>
-
-<div class="user-info">
-<h4>Alex Mercer</h4>
-<span>2 hours ago</span>
+<div class="discussions-grid" id="discussionsGrid">
 </div>
-
-</div>
-
-<h2 class="discussion-title">
-What anime completely changed your taste forever?
-</h2>
-
-<p class="discussion-text">
-Some anime completely redefine storytelling and animation.
-Which one had the biggest impact on you?
-</p>
-
-<div class="discussion-stats">
-<span>💬 328</span>
-<span>👁 19K</span>
-</div>
-
-</div>
-
-<div class="discussion-card movies public" onclick="openDiscussion('movies-discussion')">
-
-<div class="discussion-top">
-
-<div class="avatar">M</div>
-
-<div class="user-info">
-<h4>Mia Carter</h4>
-<span>5 hours ago</span>
-</div>
-
-</div>
-
-<h2 class="discussion-title">
-Best movie cinematography you've ever seen?
-</h2>
-
-<p class="discussion-text">
-From Blade Runner to Oppenheimer, some movies are visual masterpieces.
-</p>
-
-<div class="discussion-stats">
-<span>💬 214</span>
-<span>👁 12K</span>
-</div>
-
-</div>
-
-<div class="discussion-card series public" onclick="openDiscussion('series-discussion')">
-
-<div class="discussion-top">
-
-<div class="avatar">S</div>
-
-<div class="user-info">
-<h4>Sophia Lee</h4>
-<span>Yesterday</span>
-</div>
-
-</div>
-
-<h2 class="discussion-title">
-Which series had the best final season?
-</h2>
-
-<p class="discussion-text">
-Some shows fail their endings, but some deliver legendary finales.
-</p>
-
-<div class="discussion-stats">
-<span>💬 189</span>
-<span>👁 8K</span>
-</div>
-
-</div>
-
-<div class="discussion-card cartoons public" onclick="openDiscussion('cartoon-discussion')">
-
-<div class="discussion-top">
-
-<div class="avatar">J</div>
-
-<div class="user-info">
-<h4>Jason Hill</h4>
-<span>2 days ago</span>
-</div>
-
-</div>
-
-<h2 class="discussion-title">
-Cartoons that are secretly made for adults?
-</h2>
-
-<p class="discussion-text">
-Some cartoons contain deep stories and mature themes.
-</p>
-
-<div class="discussion-stats">
-<span>💬 143</span>
-<span>👁 6K</span>
-</div>
-
-</div>
-
-<div class="discussion-card anime mine" onclick="openDiscussion('one-piece-discussion')">
-
-<div class="discussion-top">
-
-<div class="avatar">K</div>
-
-<div class="user-info">
-<h4>You</h4>
-<span>3 days ago</span>
-</div>
-
-</div>
-
-<h2 class="discussion-title">
-Will One Piece actually end in the next few years?
-</h2>
-
-<p class="discussion-text">
-Oda confirmed the final saga, but fans still debate how long it will continue.
-</p>
-
-<div class="discussion-stats">
-<span>💬 401</span>
-<span>👁 25K</span>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 <script>
 
 function goHome(){
@@ -626,6 +481,101 @@ document.getElementById('searchInput');
 
 searchInput.addEventListener('input',updateDiscussions);
 
+
+     loadDiscussions();
+
+function loadDiscussions(){
+
+const grid =
+document.getElementById('discussionsGrid');
+
+const savedDiscussions =
+JSON.parse(localStorage.getItem('findraDiscussions')) || [];
+
+const defaultDiscussions = [
+
+{
+title:'What anime completely changed your taste forever?',
+category:'anime',
+text:'Some anime completely redefine storytelling and animation.',
+user:'Alex Mercer',
+time:'2 hours ago',
+comments:'328',
+views:'19K',
+type:'public'
+},
+
+{
+title:'Best movie cinematography you have ever seen?',
+category:'movies',
+text:'Some movies are visual masterpieces.',
+user:'Mia Carter',
+time:'5 hours ago',
+comments:'214',
+views:'12K',
+type:'public'
+},
+
+{
+title:'Which series had the best final season?',
+category:'series',
+text:'Some shows deliver legendary finales.',
+user:'Sophia Lee',
+time:'Yesterday',
+comments:'189',
+views:'8K',
+type:'public'
+}
+
+];
+
+const allDiscussions = [
+...savedDiscussions,
+...defaultDiscussions
+];
+
+allDiscussions.forEach(discussion=>{
+
+grid.innerHTML += `
+
+<div class="discussion-card ${discussion.category} ${discussion.type}">
+
+<div class="discussion-top">
+
+<div class="avatar">
+${discussion.user.charAt(0)}
+</div>
+
+<div class="user-info">
+<h4>${discussion.user}</h4>
+<span>${discussion.time}</span>
+</div>
+
+</div>
+
+<h2 class="discussion-title">
+${discussion.title}
+</h2>
+
+<p class="discussion-text">
+${discussion.text}
+</p>
+
+<div class="discussion-stats">
+<span>💬 ${discussion.comments}</span>
+<span>👁 ${discussion.views}</span>
+</div>
+
+</div>
+
+`;
+
+});
+
+updateDiscussions();
+
+}
+  
 </script>
 </body>
 </html>
