@@ -296,11 +296,28 @@ Humanity fights against deadly monsters from mysterious gates. Sung Jin-Woo, onc
 </p>
 
 <div class="info-grid">
+
 <div class="info-box">
 <span>Rating</span>
-<h4>9.2 / 10</h4>
+<h4 id="titleRating">9.2 / 10</h4>
 </div>
 
+<div class="info-box">
+<span>Status</span>
+<h4 id="titleStatus">Ongoing</h4>
+</div>
+
+<div class="info-box">
+<span>Episodes</span>
+<h4 id="titleEpisodes">24</h4>
+</div>
+
+<div class="info-box">
+<span>Favorites</span>
+<h4 id="titleFavorites">245K</h4>
+</div>
+
+</div>
 <div class="info-box">
 <span>Status</span>
 <h4>Ongoing</h4>
@@ -387,40 +404,75 @@ const titles={
 name:'Solo Leveling',
 category:'ANIME',
 image:'sololeveling poster.jpg',
-description:'Humanity fights against deadly monsters from mysterious gates. Sung Jin-Woo, once the weakest hunter, gains a powerful system that changes his destiny forever.'
+description:'Humanity fights against deadly monsters from mysterious gates.',
+rating:'9.2 / 10',
+status:'Ongoing',
+episodes:'24',
+favorites:'245K'
 },
+
 'one-piece':{
 name:'One Piece',
 category:'ANIME',
 image:'onepeace poster.jpg',
-description:'Monkey D. Luffy sails across the Grand Line searching for the legendary One Piece treasure.'
+description:'Monkey D. Luffy sails across the Grand Line.',
+rating:'9.0 / 10',
+status:'Ongoing',
+episodes:'1100+',
+favorites:'1.4M'
 },
-'oppenheimer':{
-name:'Oppenheimer',
-category:'MOVIE',
-image:'oppenheimer poster.jpg',
-description:'The story of J. Robert Oppenheimer and the creation of the atomic bomb during World War II.'
-},
+
 'breaking-bad':{
 name:'Breaking Bad',
 category:'SERIES',
 image:'breakingbad poster.jpg',
-description:'A chemistry teacher enters the dangerous world of drug production after a terminal diagnosis.'
+description:'A chemistry teacher enters the drug world.',
+rating:'9.7 / 10',
+status:'Finished',
+episodes:'62',
+favorites:'980K'
 },
+
 'naruto':{
 name:'Naruto',
 category:'ANIME',
 image:'naruto poster.jpg',
-description:'Naruto Uzumaki dreams of becoming Hokage and earning the respect of his village.'
+description:'Naruto dreams of becoming Hokage.',
+rating:'8.8 / 10',
+status:'Finished',
+episodes:'220',
+favorites:'870K'
 }
 };
 
 if(titles[title]){
-document.getElementById('titleName').textContent=titles[title].name;
-document.getElementById('titleCategory').textContent=titles[title].category;
-document.getElementById('posterImage').src=titles[title].image;
-document.getElementById('titleDescription').textContent=titles[title].description;
+
+document.getElementById('titleName').textContent =
+titles[title].name;
+
+document.getElementById('titleCategory').textContent =
+titles[title].category;
+
+document.getElementById('posterImage').src =
+titles[title].image;
+
+document.getElementById('titleDescription').textContent =
+titles[title].description;
+
+document.getElementById('titleRating').textContent =
+titles[title].rating;
+
+document.getElementById('titleStatus').textContent =
+titles[title].status;
+
+document.getElementById('titleEpisodes').textContent =
+titles[title].episodes;
+
+document.getElementById('titleFavorites').textContent =
+titles[title].favorites;
+
 document.title='FINDRA — '+titles[title].name;
+
 }
 
 function goHome(){
