@@ -690,7 +690,7 @@ Cartoons
 
 <div class="discussion-row">
 
-<div class="discussion-card" onclick="openDiscussion('anime-discussion')">
+<div class="discussion-card" onclick="openPagen('anime-discussion')">
 <div class="discussion-top">
 <div class="avatar" style="background-image:url('https://i.pravatar.cc/100?img=32');background-size:cover"></div>
 
@@ -706,7 +706,7 @@ Cartoons
 </div>
 </div>
 
-<div class="discussion-card" onclick="openDiscussion('movies-discussion')">
+<div class="discussion-card" onclick="openPage('movies-discussion')">
 <div class="discussion-top">
 <div class="avatar" style="background-image:url('https://i.pravatar.cc/100?img=12');background-size:cover"></div>
 
@@ -722,7 +722,7 @@ Cartoons
 </div>
 </div>
 
-<div class="discussion-card" onclick="openDiscussion('series-discussion')">
+<div class="discussion-card" onclick="openPage('series-discussion')">
 <div class="discussion-top">
 <div class="avatar" style="background-image:url('https://i.pravatar.cc/100?img=22');background-size:cover"></div>
 
@@ -738,7 +738,7 @@ Cartoons
 </div>
 </div>
 
-<div class="discussion-card" onclick="openDiscussion('cartoon-discussion')">
+<div class="discussion-card" onclick="openPage('cartoon-discussion')">
 <div class="discussion-top">
 <div class="avatar" style="background-image:url('https://i.pravatar.cc/100?img=5');background-size:cover"></div>
 
@@ -852,9 +852,10 @@ window.location.href = 'index.html';
 });
 
 // OPEN NEWS / DISCUSSION FUNCTION
-function openDiscussion(page){
-window.location.href='open-discussion.html?name=' + page;
+function openPage(page){
+window.location.href = page + '.html';
 }
+
 
 function openNews(news){
 window.location.href='news-details.html?news='+news;
