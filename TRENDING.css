@@ -1,0 +1,26 @@
+.poster{
+position:relative;
+width:68px;
+height:102px;
+border-radius:12px;
+overflow:hidden;
+background-size:cover;
+background-position:center;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.poster span{
+position:absolute;
+top:6px;
+left:6px;
+width:18px;
+height:18px;
+border-radius:6px;
+background:#f0abfc;
+color:#12071c;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:10px;
+font-weight:800;
+}
