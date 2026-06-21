@@ -1,0 +1,45 @@
+header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+margin-bottom:18px;
+}
+
+.left-header{
+display:flex;
+align-items:center;
+gap:14px;
+cursor:pointer;
+}
+
+.logo-circle{
+width:54px;
+height:54px;
+border-radius:50%;
+background:linear-gradient(135deg,#ff7de7,#a855f7);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:42px;
+font-weight:800;
+color:white;
+box-shadow:0 0 35px #d946ef;
+border:3px solid white;
+}
+.logo-title{
+font-size:34px;
+font-weight:900;
+letter-spacing:-1px;
+}
+
+.find{
+color:white;
+text-shadow:
+0 0 10px rgba(255,255,255,.4),
+0 0 25px rgba(217,70,239,.5);
+}
+
+.ra{
+color:#c084fc;
+}
