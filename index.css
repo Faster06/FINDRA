@@ -473,85 +473,198 @@ gap:10px;
 }
 /* RESPONSIVE */
 
-@media(max-width:1100px){
+@media (max-width: 1024px){
+
+.container{
+    padding:0 10px;
+}
 
 .news-grid{
-grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(2,1fr);
 }
 
 .discussion-row{
-grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(2,1fr);
 }
 
 .trending-grid{
-grid-template-columns:1fr;
+    grid-template-columns:1fr;
+}
+
+.poster-row{
+    overflow-x:auto;
+    padding-bottom:8px;
+}
+
+.poster{
+    flex-shrink:0;
 }
 
 }
 
-@media(max-width:700px){
+/* ===================== PHONE ===================== */
+
+@media (max-width:768px){
+
+body{
+    padding:10px;
+}
+
+/* HEADER */
 
 header{
-flex-wrap:wrap;
+    flex-direction:column;
+    align-items:stretch;
+    gap:15px;
 }
 
-
-.categories{
-grid-template-columns:repeat(2,1fr);
+.left-header{
+    justify-content:center;
 }
 
-.news-grid,
-.discussion-row,
-.trending-grid{
-grid-template-columns:1fr;
+.logo-circle{
+    width:46px;
+    height:46px;
+    font-size:34px;
 }
 
 .logo-title{
-font-size:28px;
+    font-size:28px;
+}
+
+.search-bar{
+    max-width:100%;
+}
+
+.header-icons{
+    justify-content:center;
+}
+
+/* CATEGORIES */
+
+.categories{
+    grid-template-columns:repeat(2,1fr);
+    gap:8px;
+}
+
+/* SECTION */
+
+.section{
+    padding:14px;
+}
+
+.section-title{
+    font-size:18px;
+}
+
+.section-header{
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+/* NEWS */
+
+.news-grid{
+    grid-template-columns:1fr;
+}
+
+.news-card{
+    height:230px;
+}
+
+/* DISCUSSION */
+
+.discussion-row{
+    grid-template-columns:1fr;
+}
+
+.discussion-card{
+    padding:12px;
+}
+
+/* TRENDING */
+
+.trending-grid{
+    grid-template-columns:1fr;
+}
+
+.poster-row{
+    overflow-x:auto;
+    gap:12px;
+    padding-bottom:10px;
+}
+
+.poster{
+    width:75px;
+    height:110px;
+    flex-shrink:0;
 }
 
 }
-.search-results{
-position:absolute;
-top:54px;
-left:0;
-width:100%;
-background:#0b0612;
-border:1px solid #3f145e;
-border-radius:18px;
-overflow:hidden;
-display:none;
-z-index:1000;
-box-shadow:0 0 30px rgba(217,70,239,0.25);
+
+/* ===================== SMALL PHONE ===================== */
+
+@media (max-width:480px){
+
+body{
+    padding:8px;
 }
 
-.search-item{
-display:flex;
-align-items:center;
-gap:14px;
-padding:12px;
-cursor:pointer;
-transition:0.3s;
-border-bottom:1px solid #241031;
+.logo-title{
+    font-size:24px;
 }
 
-.search-item:hover{
-background:#1a0d26;
-}
-.search-item img{
-width:52px;
-height:74px;
-object-fit:cover;
-border-radius:10px;
+.logo-circle{
+    width:40px;
+    height:40px;
+    font-size:28px;
 }
 
-.search-info h4{
-font-size:14px;
-margin-bottom:6px;
+.search-bar input{
+    height:44px;
+    font-size:13px;
 }
 
-.search-info p{
-font-size:12px;
-color:#c4b5fd;
+.header-icons i{
+    width:40px;
+    height:40px;
 }
 
+.categories{
+    grid-template-columns:1fr;
+}
+
+.category{
+    height:42px;
+}
+
+.news-card{
+    height:210px;
+}
+
+.news-content h3{
+    font-size:15px;
+}
+
+.news-content p{
+    font-size:12px;
+}
+
+.section-title{
+    font-size:16px;
+}
+
+.avatar{
+    width:44px;
+    height:44px;
+}
+
+.discussion-card h4{
+    font-size:12px;
+}
+
+.footer{
+    font-size:12px;
+}
+
+}
