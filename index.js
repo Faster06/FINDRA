@@ -1,4 +1,3 @@
-<script>
 // PROFILE PAGE
 document.getElementById('profileBtn').addEventListener('click',()=>{
 
@@ -73,8 +72,7 @@ btn.classList.remove('active');
 element.classList.add('active');
 
 }
-</script>
-<script>
+
 const titles=[
 {
 name:'Solo Leveling',
@@ -214,4 +212,3 @@ if(!e.target.closest('.search-bar') && !e.target.closest('.search-results')){
 results.style.display='none';
 }
 });
-</script>
