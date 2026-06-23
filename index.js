@@ -1,3 +1,4 @@
+<script>
 // PROFILE PAGE
 document.getElementById('profileBtn').addEventListener('click',()=>{
 
@@ -213,3 +214,4 @@ if(!e.target.closest('.search-bar') && !e.target.closest('.search-results')){
 results.style.display='none';
 }
 });
+</script>
