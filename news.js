@@ -34,4 +34,3 @@ cards.forEach(card=>{
 const text=card.innerText.toLowerCase();
 card.style.display=text.includes(value)?'block':'none';
 });
-});
